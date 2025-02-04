@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore events and weather in Berlin, Germany!">
+    <meta name="author" content="Adonai Villalobos">
+    <title>City Explorer & Events Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Add any external scripts or libraries like Google Maps API or Event API -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>City Explorer</h1>
+            <p>Find events and weather in Berlin, Germany!</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Weather</a></li>
+                <li><a href="#">Favorites</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="search">
+            <h2>Search for Events</h2>
+            <input type="text" id="city-search" value="Berlin" placeholder="Enter city name..." disabled>
+            <button id="search-button">Search</button>
+        </section>
+
+        <section class="event-list">
+            <h2>Upcoming Events in Berlin</h2>
+            <div class="event-item">
+                <h3>Berlin Film Festival</h3>
+                <p>Location: Berlinale Palast</p>
+                <p>Date: February 7-17, 2025</p>
+                <a href="#">More Info</a>
+            </div>
+            <div class="event-item">
+                <h3>Berlin Marathon</h3>
+                <p>Location: Various Locations</p>
+                <p>Date: September 28, 2025</p>
+                <a href="#">More Info</a>
+            </div>
+            <div class="event-item">
+                <h3>Festival of Lights</h3>
+                <p>Location: Berlin Landmarks</p>
+                <p>Date: October 9-20, 2025</p>
+                <a href="#">More Info</a>
+            </div>
+            <div class="event-item">
+                <h3>Christmas Markets in Berlin</h3>
+                <p>Location: Various Locations</p>
+                <p>Date: December 1-24, 2025</p>
+                <a href="#">More Info</a>
+            </div>
+        </section>
+
+        <section class="weather">
+            <h2>Weather in Berlin</h2>
+            <div class="weather-info">
+                <p>Temperature: <span id="temp">5°C</span></p>
+                <p>Condition: <span id="condition">Cloudy</span></p>
+                <p>Wind Speed: <span id="wind-speed">15 km/h</span></p>
+            </div>
+        </section>
+
+        <section class="favorites">
+            <h2>Your Favorite Events</h2>
+            <ul id="favorites-list">
+                <!-- Favorite events will be listed here -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 City Explorer | All Rights Reserved</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
