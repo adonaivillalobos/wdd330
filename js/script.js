@@ -1,10 +1,11 @@
 const apiKey = "0ef9b3125daa34f20b3cb5ddfd2c5de7"; 
 const city = "Berlin";
-const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}`;
+const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 async function fetchWeather() {
     try {
         const response = await fetch(weatherUrl);
+
         if (!response.ok) throw new Error("Weather data not found");
 
         const data = await response.json();
