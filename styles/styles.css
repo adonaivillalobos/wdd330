@@ -57,6 +57,9 @@ nav ul li a:hover {
 
 /* Event Card Styles */
 .event-item {
+    display: flex;
+    align-items: center; /* Vertically center event details and image */
+    justify-content: space-between; /* Push image to the right */
     background-color: white;
     padding: 20px;
     margin: 10px;
@@ -68,6 +71,21 @@ nav ul li a:hover {
 .event-item:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.event-item img {
+    width: 200px; /* Adjust image width */
+    height: auto;
+    margin-left: 20px; /* Add space between text and image */
+}
+
+.event-item h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.event-item p {
+    margin: 5px 0;
 }
 
 .event-item a {
@@ -159,5 +177,11 @@ footer {
 
     .weather-info p {
         font-size: 16px;
+    }
+
+    .event-item img {
+        width: 100%; /* Make the image take full width on smaller screens */
+        margin-left: 0; /* Remove margin for small screens */
+        margin-top: 10px; /* Add space above the image */
     }
 }
