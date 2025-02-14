@@ -2,7 +2,7 @@ const API_KEY = '0ef9b3125daa34f20b3cb5ddfd2c5de7';
 const CITY = 'Berlin';
 const LAT = 52.52;
 const LON = 13.405;
-const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&units=metric&cnt=10&appid=${API_KEY}`;
+const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&units=metric&appid=${API_KEY}`;
 
 document.addEventListener('DOMContentLoaded', fetchWeather);
 
@@ -12,10 +12,24 @@ async function fetchWeather() {
         if (!response.ok) throw new Error('Failed to fetch weather data');
         
         const data = await response.json();
-        displayWeather(data.list);
+        const dailyForecast = extractDailyForecast(data.list);
+        displayWeather(dailyForecast);
     } catch (error) {
         console.error('Error fetching weather:', error);
     }
+}
+
+function extractDailyForecast(forecastList) {
+    const dailyData = {};
+    
+    forecastList.forEach(entry => {
+        const date = new Date(entry.dt * 1000).toLocaleDateString();
+        if (!dailyData[date]) {
+            dailyData[date] = entry; // Store first entry of each day
+        }
+    });
+    
+    return Object.values(dailyData).slice(0, 10); // Get only 10 unique days
 }
 
 function displayWeather(forecast) {
