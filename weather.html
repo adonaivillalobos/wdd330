@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Check the detailed weather forecast for Berlin, Germany!">
+    <meta name="author" content="Adonai Villalobos">
+    <title>Berlin Weather Forecast</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="weather-theme">
+    <header>
+        <div class="logo">
+            <img src="images/berlin_logo.jpg" alt="Berlin Logo">
+            <h1>City Explorer</h1>
+            <p>Detailed Weather Forecast for Berlin</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="weather.html" class="active">Weather</a></li>
+                <li><a href="#">Favorites</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="current-weather">
+            <h2>Current Weather in Berlin</h2>
+            <div class="weather-info">
+                <p>Temperature: <span id="current-temp">--</span>°<span id="unit">C</span></p>
+                <p>Condition: <span id="current-condition">--</span></p>
+                <p>Wind Speed: <span id="current-wind">--</span> km/h</p>
+                <p>Humidity: <span id="current-humidity">--</span>%</p>
+                <img id="weather-icon" src="" alt="Weather Icon">
+            </div>
+            <button id="toggle-unit">Switch to °F</button>
+        </section>
+
+        <section class="hourly-forecast">
+            <h2>Hourly Forecast</h2>
+            <div class="hourly-container">
+                <!-- Hourly forecast will be inserted dynamically here -->
+            </div>
+        </section>
+
+        <section class="daily-forecast">
+            <h2>10-Day Weather Forecast</h2>
+            <div class="weather-grid">
+                <!-- Daily forecast will be inserted dynamically here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Adonai Villalobos | 2025 City Explorer | All Rights Reserved</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
