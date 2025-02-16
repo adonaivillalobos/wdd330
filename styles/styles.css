@@ -100,40 +100,6 @@ main {
     transform: rotate(360deg);
 }
 
-.weather-day {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-.weather-day img {
-    width: 50px;
-}
-
-.error {
-    color: red;
-}
-
-.modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    z-index: 1000;
-}
-
-button.close-modal {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-
 button {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
@@ -147,6 +113,18 @@ button {
 
 button:hover {
     background-color: #1d4ed8;
+}
+
+.favorites ul {
+    list-style: none;
+    padding: 0;
+}
+
+.favorites li {
+    background-color: #fef3c7;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
 }
 
 footer {

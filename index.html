@@ -17,9 +17,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="events.html">Events</a></li>
-                <li><a href="weather.html">Weather</a></li>
+                <li><a href="weather.html" class="active">Weather</a></li>
             </ul>
         </nav>
     </header>
@@ -33,16 +33,48 @@
 
         <section class="event-list">
             <h2>Upcoming Events in Berlin</h2>
-            <div id="events-container">
-                <!-- Events dynamically inserted here -->
+            <div class="event-item">
+                <h3>Berlin Film Festival</h3>
+                <p>Location: Berlinale Palast</p>
+                <p>Date: February 13-23, 2025</p>
+                <a href="#">More Info</a>
+                <img src="images/berlin_film_festival.jpg" alt="Berlin Film Festival">
+            </div>
+            <div class="event-item">
+                <h3>Berlin Marathon</h3>
+                <p>Location: Various Locations</p>
+                <p>Date: September 21, 2025</p>
+                <a href="#">More Info</a>
+                <img src="images/berlin_marathon.jpg" alt="Berlin Marathon 2025">
+            </div>
+            <div class="event-item">
+                <h3>Festival of Lights</h3>
+                <p>Location: Berlin Landmarks</p>
+                <p>Date: October 9-20, 2025</p>
+                <a href="#">More Info</a>
+                <img src="images/festival_of_lights.jpg" alt="Festival of Lights">
+            </div>
+            <div class="event-item">
+                <h3>Christmas Markets in Berlin</h3>
+                <p>Location: Various Locations</p>
+                <p>Date: December 1-24, 2025</p>
+                <a href="#">More Info</a>
+                <img src="images/christmas_markets.jpeg" alt="Christmas Market">
             </div>
         </section>
 
         <section class="weather">
             <h2>Weather in Berlin</h2>
-            <div class="weather-info" id="weather-container">
-                <!-- Weather forecast dynamically inserted here -->
+            <div class="weather-info">
+                <!-- Weather forecast will be dynamically inserted here -->
             </div>
+        </section>
+
+        <section class="favorites">
+            <h2>Your Favorite Events</h2>
+            <ul id="favorites-list">
+                <!-- Favorite events will be listed here -->
+            </ul>
         </section>
     </main>
 
