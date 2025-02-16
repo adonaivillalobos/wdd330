@@ -44,16 +44,6 @@ function displayWeather(forecast) {
     
     // Display a set of 3 days initially
     displayNextSet(forecast, currentDayIndex);
-
-    // Load more button
-    const loadMoreButton = document.createElement('button');
-    loadMoreButton.textContent = 'Load More';
-    loadMoreButton.addEventListener('click', () => {
-        currentDayIndex += 3;
-        displayNextSet(forecast, currentDayIndex);
-    });
-
-    weatherContainer.appendChild(loadMoreButton);
 }
 
 // Display the next set of days (3 at a time)
