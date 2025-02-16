@@ -86,20 +86,22 @@ main {
     margin-bottom: 1rem;
 }
 
-/* Separation between upcoming events */
+/* Event item styles */
 .event-item {
     background-color: #e0f2fe;
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease;
-    margin-bottom: 60px; /* Added margin to separate events */
+    margin-bottom: 20px; /* Separation between event items */
 }
 
+/* Hover effect for event item */
 .event-item:hover {
     transform: translateY(-10px) scale(1.05);
 }
 
+/* Event item image styling */
 .event-item img {
     width: 100%;
     height: auto;
@@ -163,13 +165,16 @@ footer {
 }
 
 @media (min-width: 768px) {
+/* Responsive design for multiple columns */
+@media (min-width: 768px) {
     main {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Two items per row */
     }
 }
 
 @media (min-width: 1024px) {
     main {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* Three items per row */
     }
+}
 }
