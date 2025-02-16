@@ -1,27 +1,105 @@
-/* General styles for main container */
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+    color: #fff;
+    padding: 1rem;
+}
+.logo img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #f59e0b;
+    border-radius: 2px;
+}
+
+nav ul li a:hover {
+    color: #facc15;
+}
+
 main {
     padding: 2rem;
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
 }
+/* Intro section styles */
+.intro {
+    background-color: #e0f2fe; /* Matching event-item background */
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+    margin-bottom: 20px; /* Adds separation between the intro and the other sections */
+}
 
-/* Event item styles */
+.intro:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.intro h2 {
+    font-size: 1.8rem;
+    color: #1e3a8a; /* Matching your theme's color */
+    margin-bottom: 1rem;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Separation between upcoming events */
 .event-item {
     background-color: #e0f2fe;
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease;
-    margin-bottom: 20px; /* Separation between event items */
+    margin-bottom: 60px; /* Added margin to separate events */
 }
 
-/* Hover effect for event item */
 .event-item:hover {
     transform: translateY(-10px) scale(1.05);
 }
 
-/* Event item image styling */
 .event-item img {
     width: 100%;
     height: auto;
@@ -29,15 +107,69 @@ main {
     margin-top: 1rem;
 }
 
-/* Responsive design for multiple columns */
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.weather-info img {
+    width: 100px;
+    height: auto;
+    transition: transform 1s ease;
+}
+
+.weather-info img:hover {
+    transform: rotate(360deg);
+}
+
+button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #3b82f6;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+.favorites ul {
+    list-style: none;
+    padding: 0;
+}
+
+.favorites li {
+    background-color: #fef3c7;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+    color: #fff;
+    position: relative;
+    bottom: 0;
+}
+
 @media (min-width: 768px) {
     main {
-        grid-template-columns: repeat(2, 1fr); /* Two items per row */
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (min-width: 1024px) {
     main {
-        grid-template-columns: repeat(3, 1fr); /* Three items per row */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
