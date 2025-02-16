@@ -62,12 +62,14 @@ main {
     gap: 2rem;
 }
 
+/* Separation between upcoming events */
 .event-item {
     background-color: #e0f2fe;
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s ease;
+    margin-bottom: 20px; /* Added margin to separate events */
 }
 
 .event-item:hover {
