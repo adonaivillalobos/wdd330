@@ -59,6 +59,26 @@ main {
     grid-template-columns: 1fr;
     gap: 2rem;
 }
+/* Add to your styles.css */
+.intro {
+    background-color: #f4f4f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.intro h2 {
+    font-size: 2rem;
+    color: #3b82f6;
+}
+
+.intro p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
 
 /* Separation between upcoming events */
 .event-item {
