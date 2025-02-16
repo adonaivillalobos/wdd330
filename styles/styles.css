@@ -59,25 +59,31 @@ main {
     grid-template-columns: 1fr;
     gap: 2rem;
 }
-/* Add to your styles.css */
+/* Intro section styles */
 .intro {
-    background-color: #f4f4f9;
-    padding: 2rem;
+    background-color: #e0f2fe; /* Matching event-item background */
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    margin-bottom: 2rem;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+    margin-bottom: 20px; /* Adds separation between the intro and the other sections */
+}
+
+.intro:hover {
+    transform: translateY(-10px) scale(1.05);
 }
 
 .intro h2 {
-    font-size: 2rem;
-    color: #3b82f6;
+    font-size: 1.8rem;
+    color: #1e3a8a; /* Matching your theme's color */
+    margin-bottom: 1rem;
 }
 
 .intro p {
     font-size: 1.1rem;
     color: #555;
     line-height: 1.6;
+    margin-bottom: 1rem;
 }
 
 /* Separation between upcoming events */
