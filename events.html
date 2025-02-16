@@ -18,8 +18,8 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="weather.html" class="active">Weather</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="weather.html">Weather</a></li>
             </ul>
         </nav>
     </header>
@@ -27,47 +27,23 @@
     <main>
         <section class="event-list">
             <h2>Detailed Events in Berlin</h2>
-
-            <div class="event-item">
-                <h3>Berlin Film Festival</h3>
-                <p><strong>Location:</strong> Berlinale Palast</p>
-                <p><strong>Date:</strong> February 13-23, 2025</p>
-                <p>The Berlin International Film Festival, also known as Berlinale, is one of the world's leading film festivals, attracting filmmakers and cinephiles globally.</p>
-                <a href="https://www.berlinale.de/en/home.html" target="_blank">Official Website</a>
-                <img src="images/berlin_film_festival.jpg" alt="Berlin Film Festival">
+            <div id="dynamic-events">
+                <!-- Events will be dynamically inserted here from API -->
             </div>
+        </section>
 
-            <div class="event-item">
-                <h3>Berlin Marathon</h3>
-                <p><strong>Location:</strong> Various Locations</p>
-                <p><strong>Date:</strong> September 21, 2025</p>
-                <p>One of the most famous marathons in the world, the Berlin Marathon attracts elite runners and amateurs alike to race through Berlin’s iconic landmarks.</p>
-                <a href="https://www.bmw-berlin-marathon.com/en/" target="_blank">Official Website</a>
-                <img src="images/berlin_marathon.jpg" alt="Berlin Marathon 2025">
-            </div>
-
-            <div class="event-item">
-                <h3>Festival of Lights</h3>
-                <p><strong>Location:</strong> Berlin Landmarks</p>
-                <p><strong>Date:</strong> October 9-20, 2025</p>
-                <p>Berlin's Festival of Lights transforms the city into a glowing masterpiece, featuring illuminated landmarks, art installations, and light projections.</p>
-                <a href="https://festival-of-lights.de/en/" target="_blank">Official Website</a>
-                <img src="images/festival_of_lights.jpg" alt="Festival of Lights">
-            </div>
-
-            <div class="event-item">
-                <h3>Christmas Markets in Berlin</h3>
-                <p><strong>Location:</strong> Various Locations</p>
-                <p><strong>Date:</strong> December 1-24, 2025</p>
-                <p>Berlin’s Christmas markets are among the most magical in Europe, offering festive treats, handcrafted gifts, and a warm holiday spirit.</p>
-                <a href="https://www.visitberlin.de/en/christmas-markets-berlin" target="_blank">Official Website</a>
-                <img src="images/christmas_markets.jpeg" alt="Christmas Market">
-            </div>
+        <section class="favorites">
+            <h2>Your Favorite Events</h2>
+            <ul id="favorites-list">
+                <!-- Favorite events will be listed here dynamically -->
+            </ul>
         </section>
     </main>
 
     <footer>
         <p>&copy; Adonai Villalobos | 2025 City Explorer | All Rights Reserved</p>
     </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
