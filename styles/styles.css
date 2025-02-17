@@ -88,10 +88,6 @@ main {
     margin-bottom: 30px;
 }
 
-.event-item:hover {
-    transform: translateY(-10px) scale(1.05);
-}
-
 .event-item img {
     width: 75%;
     height: auto;
