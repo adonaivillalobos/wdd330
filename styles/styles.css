@@ -17,9 +17,9 @@ header {
 }
 
 .logo img {
-    width: 80px;
+    width: 100px;
     height: auto;
-    border-radius: 50%;
+    border-radius: 70%;
 }
 
 nav ul {
