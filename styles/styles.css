@@ -13,7 +13,6 @@ header {
     align-items: center;
     background: linear-gradient(135deg, #3b82f6, #1e3a8a);
     color: #fff;
-    padding: 1rem;
 }
 
 .logo img {
@@ -158,4 +157,29 @@ footer {
     .events {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+/* Exchange Rates Section */
+.exchange-rates {
+    background-color: #e0f2fe;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.exchange-info {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exchange-rate {
+    background-color: #fef3c7;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    width: 100px; /* Adjust width as needed */
+    text-align: center;
 }
