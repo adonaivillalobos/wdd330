@@ -1,52 +1,52 @@
+// Existing weather API code
 const API_KEY = '0ef9b3125daa34f20b3cb5ddfd2c5de7';
 const CITY = 'Berlin';
 const LAT = 52.52;
 const LON = 13.405;
 const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&units=metric&appid=${API_KEY}`;
 
-document.addEventListener('DOMContentLoaded', fetchWeather);
+document.addEventListener('DOMContentLoaded', () => {
+    fetchWeather();
+    fetchExchangeRates();
+});
 
-let currentDayIndex = 0; // To track the currently loaded set of days
+let currentDayIndex = 0;
 
-// Fetch weather data from the API
+// Fetch weather data
 async function fetchWeather() {
     try {
         const response = await fetch(WEATHER_API_URL);
         if (!response.ok) throw new Error('Failed to fetch weather data');
-        
+
         const data = await response.json();
         const dailyForecast = extractDailyForecast(data.list);
         displayWeather(dailyForecast);
     } catch (error) {
         console.error('Error fetching weather:', error);
-        displayError(error.message); // Show error to user
+        displayError(error.message);
     }
 }
 
-// Extract unique daily forecast data
+// Extract daily forecast
 function extractDailyForecast(forecastList) {
     const dailyData = {};
-    
     forecastList.forEach(entry => {
         const date = new Date(entry.dt * 1000).toLocaleDateString();
         if (!dailyData[date]) {
-            dailyData[date] = entry; // Store first entry of each day
+            dailyData[date] = entry;
         }
     });
-    
-    return Object.values(dailyData).slice(0, 10); // Get only 10 unique days
+    return Object.values(dailyData).slice(0, 10);
 }
 
-// Display the weather data on the page
+// Display weather
 function displayWeather(forecast) {
     const weatherContainer = document.querySelector('.weather-info');
     weatherContainer.innerHTML = '<h3>10-Day Weather Forecast</h3>';
-    
-    // Display a set of 3 days initially
     displayNextSet(forecast, currentDayIndex);
 }
 
-// Display the next set of days (3 at a time)
+// Display next set of weather data
 function displayNextSet(forecast, index) {
     const weatherContainer = document.querySelector('.weather-info');
     for (let i = index; i < index + 3 && i < forecast.length; i++) {
@@ -66,15 +66,13 @@ function displayNextSet(forecast, index) {
             <p>Condition: ${condition}</p>
             <p>Wind: ${windSpeed} km/h</p>
         `;
-        
-        // Add click event for modal display
-        dayElement.addEventListener('click', () => showModal(day));
 
+        dayElement.addEventListener('click', () => showModal(day));
         weatherContainer.appendChild(dayElement);
     }
 }
 
-// Display a modal with detailed weather information when a day is clicked
+// Display weather modal
 function showModal(day) {
     const modal = document.createElement('div');
     modal.classList.add('modal');
@@ -87,14 +85,47 @@ function showModal(day) {
     `;
     document.body.appendChild(modal);
 
-    const closeModalButton = modal.querySelector('.close-modal');
-    closeModalButton.addEventListener('click', () => {
+    modal.querySelector('.close-modal').addEventListener('click', () => {
         document.body.removeChild(modal);
     });
 }
 
-// Show an error message to the user if the fetch fails
+// Display error
 function displayError(message) {
     const weatherContainer = document.querySelector('.weather-info');
     weatherContainer.innerHTML = `<p class="error">Sorry, something went wrong: ${message}</p>`;
 }
+
+// New Exchange API integration
+const EXCHANGE_API_KEY = 'youb1265b001bb2dafece4695ee';
+
+const EXCHANGE_API_URL = 'https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/EUR';
+
+async function fetchExchangeRates() {
+    try {
+        const response = await fetch(EXCHANGE_API_URL);
+        if (!response.ok) throw new Error('Failed to fetch exchange rates');
+
+        const data = await response.json();
+        displayExchangeRates(data.rates);
+    } catch (error) {
+        console.error('Error fetching exchange rates:', error);
+    }
+}
+
+// Display exchange rates
+function displayExchangeRates(rates) {
+    const exchangeContainer = document.querySelector('.exchange-info');
+    if (!exchangeContainer) return;
+
+    exchangeContainer.innerHTML = '<h3>Exchange Rates (EUR)</h3>';
+    const importantRates = ['USD', 'GBP', 'JPY', 'AUD'];
+
+    importantRates.forEach(currency => {
+        const rate = rates[currency];
+        const rateElement = document.createElement('div');
+        rateElement.classList.add('exchange-rate');
+        rateElement.textContent = `${currency}: ${rate}`;
+        exchangeContainer.appendChild(rateElement);
+    });
+} 
