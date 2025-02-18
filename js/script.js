@@ -98,8 +98,7 @@ function displayError(message) {
 
 // New Exchange API integration
 const EXCHANGE_API_KEY = 'youb1265b001bb2dafece4695ee';
-
-const EXCHANGE_API_URL = 'https://v6.exchangerate-api.com/v6/YOUR_API_KEY/latest/EUR';
+const EXCHANGE_API_URL = `https://v6.exchangerate-api.com/v6/${EXCHANGE_API_KEY}/latest/EUR`;
 
 async function fetchExchangeRates() {
     try {
@@ -110,6 +109,10 @@ async function fetchExchangeRates() {
         displayExchangeRates(data.rates);
     } catch (error) {
         console.error('Error fetching exchange rates:', error);
+        const exchangeContainer = document.querySelector('.exchange-info');
+        if (exchangeContainer) {
+            exchangeContainer.innerHTML = `<p class="error">Sorry, we couldn't fetch the exchange rates. Please try again later.</p>`;
+        }
     }
 }
 
@@ -128,4 +131,4 @@ function displayExchangeRates(rates) {
         rateElement.textContent = `${currency}: ${rate}`;
         exchangeContainer.appendChild(rateElement);
     });
-} 
+}
