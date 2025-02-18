@@ -97,8 +97,8 @@ function displayError(message) {
 }
 
 // New Exchange API integration
-const EXCHANGE_API_KEY = 'youb1265b001bb2dafece4695ee';
-const EXCHANGE_API_URL = `https://v6.exchangerate-api.com/v6/${EXCHANGE_API_KEY}/latest/EUR`;
+const EXCHANGE_API_KEY = 'b1265b001bb2dafece4695ee';
+const EXCHANGE_API_URL = `https://v6.exchangerate-api.com/v6/b1265b001bb2dafece4695ee/latest/USD`;
 
 async function fetchExchangeRates() {
     try {
@@ -121,7 +121,7 @@ function displayExchangeRates(rates) {
     const exchangeContainer = document.querySelector('.exchange-info');
     if (!exchangeContainer) return;
 
-    exchangeContainer.innerHTML = '<h3>Exchange Rates (EUR)</h3>';
+    exchangeContainer.innerHTML = '<h3>Exchange Rates (USD)</h3>';
     const importantRates = ['USD', 'GBP', 'JPY', 'AUD'];
 
     importantRates.forEach(currency => {
