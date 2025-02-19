@@ -19,6 +19,8 @@ async function fetchWeather() {
         if (!response.ok) throw new Error('Failed to fetch weather data');
 
         const data = await response.json();
+        if (!data.list || data.list.length === 0) throw new Error('No weather data available');
+        
         const dailyForecast = extractDailyForecast(data.list);
         displayWeather(dailyForecast);
     } catch (error) {
@@ -42,6 +44,10 @@ function extractDailyForecast(forecastList) {
 // Display weather
 function displayWeather(forecast) {
     const weatherContainer = document.querySelector('.weather-info');
+    if (!weatherContainer) {
+        console.error("Error: Element with class 'weather-info' not found.");
+        return;
+    }
     weatherContainer.innerHTML = '<h3>10-Day Weather Forecast</h3>';
     displayNextSet(forecast, currentDayIndex);
 }
@@ -49,13 +55,15 @@ function displayWeather(forecast) {
 // Display next set of weather data
 function displayNextSet(forecast, index) {
     const weatherContainer = document.querySelector('.weather-info');
+    if (!weatherContainer) return;
+    
     for (let i = index; i < index + 3 && i < forecast.length; i++) {
         const day = forecast[i];
         const date = new Date(day.dt * 1000).toLocaleDateString();
         const temp = day.main.temp;
-        const condition = day.weather[0].description;
-        const windSpeed = day.wind.speed;
-        const iconCode = day.weather[0].icon;
+        const condition = day.weather[0]?.description || 'N/A';
+        const windSpeed = day.wind?.speed || 'N/A';
+        const iconCode = day.weather[0]?.icon || '';
 
         const dayElement = document.createElement('div');
         dayElement.classList.add('weather-day');
@@ -79,8 +87,8 @@ function showModal(day) {
     modal.innerHTML = `
         <h3>${new Date(day.dt * 1000).toLocaleDateString()}</h3>
         <p>Temp: ${day.main.temp}°C</p>
-        <p>Condition: ${day.weather[0].description}</p>
-        <p>Wind: ${day.wind.speed} km/h</p>
+        <p>Condition: ${day.weather[0]?.description || 'N/A'}</p>
+        <p>Wind: ${day.wind?.speed || 'N/A'} km/h</p>
         <button class="close-modal">Close</button>
     `;
     document.body.appendChild(modal);
@@ -93,12 +101,14 @@ function showModal(day) {
 // Display error
 function displayError(message) {
     const weatherContainer = document.querySelector('.weather-info');
-    weatherContainer.innerHTML = `<p class="error">Sorry, something went wrong: ${message}</p>`;
+    if (weatherContainer) {
+        weatherContainer.innerHTML = `<p class="error">Sorry, something went wrong: ${message}</p>`;
+    }
 }
 
 // New Exchange API integration
 const EXCHANGE_API_KEY = 'b1265b001bb2dafece4695ee';
-const EXCHANGE_API_URL = `https://v6.exchangerate-api.com/v6/b1265b001bb2dafece4695ee/latest/USD`;
+const EXCHANGE_API_URL = `https://v6.exchangerate-api.com/v6/${EXCHANGE_API_KEY}/latest/USD`;
 
 async function fetchExchangeRates() {
     try {
@@ -106,6 +116,8 @@ async function fetchExchangeRates() {
         if (!response.ok) throw new Error('Failed to fetch exchange rates');
 
         const data = await response.json();
+        if (!data.rates) throw new Error('No exchange rate data available');
+
         displayExchangeRates(data.rates);
     } catch (error) {
         console.error('Error fetching exchange rates:', error);
@@ -119,16 +131,21 @@ async function fetchExchangeRates() {
 // Display exchange rates
 function displayExchangeRates(rates) {
     const exchangeContainer = document.querySelector('.exchange-info');
-    if (!exchangeContainer) return;
-
+    if (!exchangeContainer) {
+        console.error("Error: Element with class 'exchange-info' not found.");
+        return;
+    }
     exchangeContainer.innerHTML = '<h3>Exchange Rates (USD)</h3>';
     const importantRates = ['USD', 'GBP', 'JPY', 'AUD'];
 
     importantRates.forEach(currency => {
-        const rate = rates[currency];
-        const rateElement = document.createElement('div');
-        rateElement.classList.add('exchange-rate');
-        rateElement.textContent = `${currency}: ${rate}`;
-        exchangeContainer.appendChild(rateElement);
+        if (rates[currency] !== undefined) {
+            const rateElement = document.createElement('div');
+            rateElement.classList.add('exchange-rate');
+            rateElement.textContent = `${currency}: ${rates[currency]}`;
+            exchangeContainer.appendChild(rateElement);
+        } else {
+            console.warn(`Exchange rate for ${currency} not found.`);
+        }
     });
 }
